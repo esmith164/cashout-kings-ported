@@ -2,6 +2,7 @@
 import path from 'path'
 import fs from 'fs'
 import { fileURLToPath } from 'url'
+import { createProxyMiddleware } from 'http-proxy-middleware'
 
 // Vite
 import { createServer } from 'vite'
@@ -25,7 +26,7 @@ const getIndexHTML = async () => {
 }
 
 async function start() {
-  const manifest = isProd 
+  const manifest = isProd
     ? JSON.parse(fs.readFileSync(resolve('../dist/client/ssr-manifest.json'), 'utf-8'))
     : null
 
@@ -35,12 +36,25 @@ async function start() {
   let vite = null
   if (isProd) {
     app.use(express.static('dist/client', { index: false }))
+    console.log('is prod')
+    app.use('/api', createProxyMiddleware(
+      { 
+        target: 'https://jsonplaceholder.typicode.com/', 
+        changeOrigin: true, 
+        secure: false, 
+        pathRewrite: {
+          '^/api': ''
+        } 
+      }
+    ));
+
   } else {
+    console.log('This is running!')
     vite = await createServer({
       // eslint-disable-next-line no-undef
       root: process.cwd(),
       server: { middlewareMode: true },
-      appType: 'custom'
+      appType: 'custom',
     })
 
     app.use(vite.middlewares)
@@ -60,7 +74,7 @@ async function start() {
         template = await vite.transformIndexHtml(url, template)
         render = (await vite.ssrLoadModule(resolve('./main-server.js'))).render
       }
-      
+
       const [appHtml, preloadLinks] = await render(url, manifest)
       const html = template
         .replace(`<!--preload-links-->`, preloadLinks)
@@ -79,7 +93,7 @@ async function start() {
   app.use('/', router)
 
   app.listen(3000, () => {
-    console.log('Сервер запущен')
+    console.log('Listening on https://localhost:3000')
   })
 }
 
