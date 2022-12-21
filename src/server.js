@@ -60,8 +60,6 @@ async function start() {
     app.use(vite.middlewares)
   }
 
-  // Ловим все запросы, а вообще можно продублировать тут
-  // логику из src/router.js
   router.get('/*', async (req, res, next) => {
     try {
       const url = req.url
