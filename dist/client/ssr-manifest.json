@@ -1,0 +1,88 @@
+{
+  "vite/modulepreload-polyfill": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "node_modules/@vue/shared/dist/shared.esm-bundler.js": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "src/assets/logo.svg": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "node_modules/vue-router/dist/vue-router.mjs": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "src/components/HelloWorld.vue?vue&type=style&index=0&scoped=3ba3ab19&lang.css": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "\u0000plugin-vue:export-helper": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "src/components/HelloWorld.vue": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "src/App.vue?vue&type=style&index=0&scoped=fc484609&lang.css": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "src/App.vue": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "\u0000vite/preload-helper": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "src/components/WelcomeItem.vue?vue&type=style&index=0&scoped=b362a3d3&lang.css": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "src/components/WelcomeItem.vue": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "src/components/icons/IconDocumentation.vue": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "src/components/icons/IconTooling.vue": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "src/components/icons/IconEcosystem.vue": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "src/components/icons/IconCommunity.vue": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "src/components/icons/IconSupport.vue": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "src/components/TheWelcome.vue": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "src/views/HomeView.vue": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "src/router/index.js": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "src/assets/main.css": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "src/main.js": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "index.html": [
+    "/assets/logo.da9b9095.svg"
+  ],
+  "src/views/AboutView.vue?vue&type=style&index=0&lang.css": [
+    "/assets/AboutView.7a5882db.js",
+    "/assets/AboutView.4d995ba2.css"
+  ],
+  "src/views/AboutView.vue": [
+    "/assets/AboutView.7a5882db.js",
+    "/assets/AboutView.4d995ba2.css"
+  ]
+}

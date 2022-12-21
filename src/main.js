@@ -1,24 +1,11 @@
+import { createApp } from 'vue'
 import App from './App.vue'
-import { createSSRApp } from 'vue'
-import { createRouter } from './router'
-import { createHead } from '@vueuse/head'
-import ClientOnly from './components/ClientOnly'
-import './index.css'
-import { createInteract, createRequest, createSession, createSyncState, createSXO } from './hooks/app'
+import router from './router'
 
-export function createApp (context, syncState = {}) {
-  const app = createSSRApp(App)
-  const head = createHead()
+import './assets/main.css'
 
-  const interact = createInteract(app)
-  const session = createSession(app, context)
-  const SXO = createSXO(app)
-  const router = createRouter(SXO, interact, session)
-  const request = createRequest(app, session, interact, router)
-  createSyncState(app, syncState)
+const app = createApp(App)
 
-  app.use(router).use(head)
-  app.component(ClientOnly.name, ClientOnly)
+app.use(router)
 
-  return { app, router, head, session, request }
-}
+app.mount('#app')
