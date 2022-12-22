@@ -1,0 +1,5 @@
+body {
+  &.dark-mode {
+    @apply bg-dark-600;
+  }
+}

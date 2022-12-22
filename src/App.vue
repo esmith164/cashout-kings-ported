@@ -22,11 +22,25 @@ export default {
     const supabase = useSupabase();
     const auth = useAuthStore();
     const router = useRouter();
+    /**
+     * Layout and Themeing
+     */
     function getLayout() {
-      if (router.currentRoute.value.meta.requiresAuth) {
-        return 'dashboard'
+      // Determine Layout
+      if (router.currentRoute.value.meta.layout == "dashboard") {
+        return "dashboard";
       }
-      return
+      return;
+    }
+    if (!import.meta.env.SSR) {
+      // Client Side Only
+      const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)"); // Determine Light/Dark Sys. Pref
+      if (darkThemeMq.matches) { // TODO: Add manual toggle
+        document.getElementsByTagName('body')[0].classList.add('dark-mode')
+
+      } else {
+        // Theme set to light.
+      }
     }
     onMounted(() => {
       /**

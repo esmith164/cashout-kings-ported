@@ -29,18 +29,13 @@
       <img :src="user.user_metadata.avatar_url" class="w-8 h-8 rounded-lg" v-if="user.user_metadata" />
       <img src="https://via.placeholder.com/820x8" class="w-8 h-8 rounded-lg" v-else />
 
-      <div>
+      <div class="flex flex-col">
         <h4 class="font-bold dark:text-neutral-0">
           {{ user.user_metadata.name }}
         </h4>
         <p class="text-sm text-light-400 -mt-1 dark:text-neutral-400 truncate">
-          {{ user.user_metadata.email }}
+          Logged In
         </p>
-      </div>
-      <div class="ml-auto">
-        <button class="dark:text-neutral-0">
-          <i class="fa fa-chevron-down"></i>
-        </button>
       </div>
     </div>
   </div>
