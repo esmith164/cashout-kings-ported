@@ -4,9 +4,7 @@
       <Sidebar class="sidebar-wrapper" v-if="ui.sidebarOpen" />
     </transition>
     <div class="dashboard-content">
-      <!--
       <Header class="header-override" />
-      --->
       <slot />
     </div>
   </div>
@@ -48,12 +46,13 @@
 </style>
 <script>
 import Sidebar from "@/components/ui/Sidebar.vue";
+import Header from "@/components/ui/Header.vue";
 import { uiStore } from "@/store/ui";
 
 export default {
   components: {
     Sidebar,
-    // Header,
+    Header,
   },
   setup() {
     const ui = uiStore();
