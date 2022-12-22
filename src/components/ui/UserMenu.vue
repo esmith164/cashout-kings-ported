@@ -1,6 +1,5 @@
 <template>
   <div class="mt-auto flex gap-x-2">
-    <h4 class="text-neutral-0">Test</h4>
     <button
       class="
         w-10
@@ -27,13 +26,16 @@
         items-center
       "
     >
-      <img src="https://via.placeholder.com/820x8" class="w-8 h-8 rounded-lg" />
+      <img :src="user.user_metadata.avatar_url" class="w-8 h-8 rounded-lg" v-if="user.user_metadata" />
+      <img src="https://via.placeholder.com/820x8" class="w-8 h-8 rounded-lg" v-else />
 
       <div>
         <h4 class="font-bold dark:text-neutral-0">
-          X
+          {{ user.user_metadata.name }}
         </h4>
-        <p class="text-sm text-light-400 -mt-1 dark:text-neutral-400">53920</p>
+        <p class="text-sm text-light-400 -mt-1 dark:text-neutral-400 truncate">
+          {{ user.user_metadata.email }}
+        </p>
       </div>
       <div class="ml-auto">
         <button class="dark:text-neutral-0">
@@ -44,12 +46,16 @@
   </div>
 </template>
 <script>
+import { useAuthStore } from "@/store/auth";
+
 export default {
-  setup() {
-    function toggleColor() {
-    }
+  async setup() {
+    const auth = useAuthStore();
+    const user = await auth.fetchUser();
+    function toggleColor() {}
     return {
       toggleColor,
+      user,
     };
   },
 };

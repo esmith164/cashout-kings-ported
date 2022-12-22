@@ -1,10 +1,17 @@
 <template>
-  <div class="sidebar border-r-2 border-light-100 dark:border-dark-400 flex flex-col">
+  <div
+    class="
+      sidebar
+      border-r-2 border-light-100
+      dark:border-dark-400
+      flex flex-col
+    "
+  >
     <div class="brand flex gap-x-3 mb-16 items-center">
       <img src="@/assets/img/logo.svg" class="w-10" />
       <h2 class="font-bold text-lg dark:text-neutral-0">Cashout Kings</h2>
       <button class="menu-toggle" @click="toggleSidebar()">
-        <i class="far fa-times"/>
+        <i class="far fa-times" />
       </button>
     </div>
     <h4 class="text-lg mb-6 font-medium dark:text-neutral-0">Menu</h4>
@@ -35,7 +42,9 @@
         >
       </li>
     </ul>
-    <UserMenu />
+    <Suspense>
+      <UserMenu />
+    </Suspense>
     <CreateShipment v-if="ui.activeModal === 'create-shipment'" />
   </div>
 </template>
@@ -84,7 +93,7 @@
   @media (max-width: 1330px) {
     .sidebar {
       flex: 0 0 300px;
-      @apply shadow-lg
+      @apply shadow-lg;
     }
     .menu-toggle {
       @apply block dark:text-neutral-0 text-xl ml-auto;
@@ -98,7 +107,7 @@ import { uiStore } from "@/store/ui";
 export default {
   components: {
     UserMenu,
-  //  CreateShipment,
+    //  CreateShipment,
   },
   setup() {
     const ui = uiStore();
@@ -106,12 +115,12 @@ export default {
       ui.toggleModal("create-shipment");
     }
     function toggleSidebar() {
-      ui.toggleSidebar()
+      ui.toggleSidebar();
     }
     return {
       ui,
       toggleCreate,
-      toggleSidebar
+      toggleSidebar,
     };
   },
 };
