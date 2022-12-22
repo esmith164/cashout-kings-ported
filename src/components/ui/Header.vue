@@ -13,8 +13,8 @@
       </span>
     </div>
     <button class="font-medium flex items-center dark:text-neutral-0">
-     x
-      <i class="fa fa-exit ml-4"></i>
+     {{ user.user_metadata.email}}
+      <i class="fa fa-arrow-right ml-4"></i>
     </button>
   </div>
 </template>
@@ -39,12 +39,16 @@
 </style>
 <script>
 import { uiStore } from '@/store/ui'
+import { useAuthStore } from '@/store/auth'
 export default {
-  setup() {
+  async setup() {
     const ui = uiStore()
-
+    const auth = useAuthStore()
+    const user = await auth.fetchUser()
     return {
       ui,
+      auth,
+      user
     }
   }
 }

@@ -1,6 +1,6 @@
 
 <template>
-  <Dashboard v-if="layout == 'dashboard'">
+  <Dashboard v-if="getLayout() == 'dashboard'">
     <RouterView />
   </Dashboard>
   <div v-else>
@@ -22,14 +22,16 @@ export default {
     const supabase = useSupabase();
     const auth = useAuthStore();
     const router = useRouter();
-    const layout = ref("");
+    function getLayout() {
+      if (router.currentRoute.value.meta.requiresAuth) {
+        return 'dashboard'
+      }
+      return
+    }
     onMounted(() => {
       /**
        * Layout Logic
        */
-      router.beforeEach((to) => {
-        layout.value = to.meta.layout;
-      });
       /**
        * Handle Session Changes
        */
@@ -50,7 +52,7 @@ export default {
         }
       });
     });
-    return { layout };
+    return { getLayout };
   },
 };
 </script>

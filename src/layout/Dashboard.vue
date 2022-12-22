@@ -4,8 +4,9 @@
       <Sidebar class="sidebar-wrapper" v-if="ui.sidebarOpen" />
     </transition>
     <div class="dashboard-content">
-      <Header class="header-override" />
-      <slot />
+      <Suspense>
+        <Header class="header-override" />
+      </Suspense>k      <slot />
     </div>
   </div>
 </template>
