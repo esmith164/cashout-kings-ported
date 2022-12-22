@@ -8,10 +8,13 @@ import { renderToString } from 'vue/server-renderer'
 // App
 import App from './App.vue'
 import router from './router/index.js'
+import { createPinia } from 'pinia'
 
 export async function render(url, manifest = null) {
+  const pinia = createPinia()
   const app = createSSRApp(App)
   app.use(router)
+  app.use(pinia)
 
   await router.push(url)
   await router.isReady()

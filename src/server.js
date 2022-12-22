@@ -56,7 +56,16 @@ async function start() {
       server: { middlewareMode: true },
       appType: 'custom',
     })
-
+    app.use('/api', createProxyMiddleware(
+      { 
+        target: 'https://jsonplaceholder.typicode.com/', 
+        changeOrigin: true, 
+        secure: false, 
+        pathRewrite: {
+          '^/api': ''
+        } 
+      }
+    ));
     app.use(vite.middlewares)
   }
 
@@ -91,7 +100,7 @@ async function start() {
   app.use('/', router)
 
   app.listen(3000, () => {
-    console.log('Listening on https://localhost:3000')
+    console.log('Listening on http://localhost:3000')
   })
 }
 

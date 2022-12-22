@@ -1,10 +1,15 @@
+<template>
+  <div>
+        <button @click="login('discord')">Login With Discord</button>
+
+  </div>
+</template>
 <script>
 import { useSSRContext } from "vue";
 import { useApiStore } from "@/store/api";
 import { useSupabase } from "@/composables/Supabase";
 export default {
   setup() {
-    const api = useApiStore();
     const supabase = useSupabase()
     async function login(provider) {
       const { data, error } = await supabase.auth.signInWithOAuth({
@@ -14,21 +19,9 @@ export default {
         },
       });
     }
-    return { api, login };
+    return { login };
   },
   async serverPrefetch() {
-    const api = useApiStore();
-    api.example().then((res) => {
-     // console.log(res.data);
-    });
-    console.log("Test! From Server!");
   },
 };
 </script>
-
-<template>
-  <main>
-    <button @click="login('discord')">Login With Discord</button>
-    <button @click="api.example()">Test!</button>
-  </main>
-</template>
