@@ -3,7 +3,8 @@ import App from './App.vue'
 import router from './router'
 import { createPinia } from 'pinia'
 
-import './assets/main.css'
+import './assets/css/tailwind.css'
+import './assets/css/main.scss'
 const pinia = createPinia()
 
 const app = createApp(App)

@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, createMemoryHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import DashboardView from '../views/DashboardView.vue'
-import AuthLogin from '../views/AuthLogin.vue'
+import LoginView from '../views/LoginView.vue'
 import { useSupabase } from "@/composables/Supabase";
 
 const baseUrl = import.meta.env.BASE_URL
@@ -14,9 +14,6 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-      meta: {
-        requiresAuth: true,
-      }
     },
     {
       path: '/dashboard',
@@ -24,12 +21,13 @@ const router = createRouter({
       component: DashboardView,
       meta: {
         requiresAuth: true,
+        layout: 'dashboard'
       }
     },
     {
       path: '/login',
       name: 'login',
-      component: AuthLogin,
+      component: LoginView,
     },
   ]
 })

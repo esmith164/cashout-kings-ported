@@ -1,36 +1,43 @@
 
 <template>
-  <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    />
-  </header>
-  <RouterView />
+  <Dashboard v-if="layout == 'dashboard'">
+    <RouterView />
+  </Dashboard>
+  <div v-else>
+    <RouterView />
+  </div>
 </template>
 <script>
 import { onMounted, ref } from "vue";
 import { useSupabase } from "@/composables/Supabase";
 import { useAuthStore } from "@/store/auth";
 import { RouterView, useRouter } from "vue-router";
+import Dashboard from "@/layout/Dashboard.vue";
 export default {
+  components: {
+    Dashboard,
+  },
   setup() {
     const session = ref();
     const supabase = useSupabase();
     const auth = useAuthStore();
     const router = useRouter();
+    const layout = ref("");
     onMounted(() => {
       /**
-       * UPDATE SESSION VALUE
+       * Layout Logic
+       */
+      router.beforeEach((to) => {
+        layout.value = to.meta.layout;
+      });
+      /**
+       * Handle Session Changes
        */
       supabase.auth.getSession().then(({ data }) => {
         session.value = data.session;
       });
       /**
-       * UPDATE STATE
+       *
        */
       supabase.auth.onAuthStateChange((_, _session) => {
         session.value = _session;
@@ -43,6 +50,7 @@ export default {
         }
       });
     });
+    return { layout };
   },
 };
 </script>
